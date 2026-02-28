@@ -1,4 +1,5 @@
-#Game or whatever idk
+#very cool test terminal game
+#this is authed and managed under hikehy.
 
 #Imports
 import os
