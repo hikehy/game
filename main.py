@@ -56,7 +56,6 @@ def draw():
 def main():
     global enemydodgesuccess
     global dodgesuccess
-    dodgesuccess = False
     #processing user input
     userinput = input("Option: ")
     match userinput:
@@ -65,7 +64,7 @@ def main():
             exit(0)
         #Attacking enemy
         case "1":
-            if not enemydodgesuccess == True:
+            if enemydodgesuccess != True:
                 attackvalue = random.randint(1, player["attack"])
                 enemy["health"] -= attackvalue
                 print("You dealt: ", attackvalue, " damage")
@@ -73,6 +72,7 @@ def main():
             else:
                 print(enemy["name"], " dodged attack")
                 input("press enter to continue")
+                enemydodgesuccess = False
         #Dodging
         case "2":
             dodge = random.randint(1, 100)
@@ -121,9 +121,10 @@ def main():
                 clearconsole()
                 print("You dodged ", enemy["name"], "'s attack")
                 input("press enter to contine")
+                dodgesuccess = False
         #Enemy dodge
         else:
-            if enemydodge != enemy["speed"] or not enemydodge < enemy["speed"]:   
+            if enemydodge > enemy["speed"]:   
                 clearconsole()
                 print("enemy used dodge...")
                 input("press enter to see result")
