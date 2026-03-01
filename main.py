@@ -12,6 +12,20 @@ enemy = None
 enemydodgesuccess = False
 dodgesuccess = False
 
+def dodgeresult(name, result):
+    clearconsole()
+    if name == player:
+        print("you used dodge used dodge...")
+        input("press enter to see result")
+        print("your dodge ", result)
+        input("press enter to continue")
+    else:
+        print("enemy used dodge...")
+        input("press enter to see result")
+        print("enemy dodge ", result)
+        input("press enter to continue")
+    clearconsole()
+
 #loads objects from json
 def importjson(file, name):
     with open(file, "r") as f:
@@ -77,20 +91,10 @@ def main():
         case "2":
             dodge = random.randint(1, 100)
             if dodge < player["speed"]:
-                clearconsole()
-                print("you used dodge used dodge...")
-                input("press enter to see result")
-                print("your dodge failed")
-                input("press enter to continue")
-                clearconsole()
+                dodgeresult("player", "failed") 
             else:
-                clearconsole()
-                print("you used dodge used dodge...")
-                input("press enter to see result")
-                print("your dodge succeeded")
-                input("press enter to continue")
+                dodgeresult("player", "succeded")
                 dodgesuccess = True
-                clearconsole()
         #Error Handeling
         case _:
             clearconsole()
@@ -124,22 +128,12 @@ def main():
                 dodgesuccess = False
         #Enemy dodge
         else:
-            if enemydodge > enemy["speed"]:   
-                clearconsole()
-                print("enemy used dodge...")
-                input("press enter to see result")
-                print("enemy dodge failed")
-                input("press enter to continue")
-   
-                clearconsole()
+            if enemydodge < enemy["speed"]:
+                dodgeresult("enemy","failed")
             else:
-                clearconsole()
-                print("enemy used dodge...")
-                input("press enter to see result")
-                print("enemy dodge succeded")
-                input("press enter to continue")
-                clearconsole()
+                dodgeresult("enemy", "failed")
                 enemydodgesuccess = True
+
 #Keeps the game running
 def gameloop():
     selectenemy()
