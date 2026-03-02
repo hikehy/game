@@ -6,40 +6,23 @@ import json
 import random
 import platform
 
+#include functions
+from Game.functions.draw import draw
+from Game.functions.clearconsole import clearconsole
+from Game.functions.dodgeresult import dodgeresult
+
+
 #SUPER DUPER IMPORTANT MAIN VARIABLES
 userinput = "null"
 enemy = None
 enemydodgesuccess = False
 dodgesuccess = False
 
-def dodgeresult(name, result):
-    clearconsole()
-    if name == player:
-        print("you used dodge used dodge...")
-        input("press enter to see result")
-        print("your dodge ", result)
-        input("press enter to continue")
-    else:
-        print("enemy used dodge...")
-        input("press enter to see result")
-        print("enemy dodge ", result)
-        input("press enter to continue")
-    clearconsole()
-
 #loads objects from json
 def importjson(file, name):
     with open(file, "r") as f:
         data = json.load(f)
     globals()[name] = data
-
-#clears console on all  platforms
-def clearconsole():
-    system = platform.system()
-    if system == "Windows":
-        os.system("cls")
-    else:
-        os.system("clear")
-
 
 #Creating Objects
 def loadalljson():
@@ -58,13 +41,7 @@ def selectenemy():
 selectenemy()
 
 #Draws terminal screen
-def draw():
-    print(enemy["name"])
-    print(enemy["health"],"\n\n\n\n\n")
-    print("Your Health: ", player["health"])
-    print("__________________________________________________________________")
-    print("1. Attack")
-    print("2. Dodge")
+draw(enemy, player)
 
 #Main funtcion where code goes
 def main():
@@ -150,7 +127,7 @@ def gameloop():
             print ("THE ONE AND ONLY...")
             print("GEORGE FENTDROID")
         else:
-            draw()
+            draw(enemy,player)
             main()
             clearconsole()
 
