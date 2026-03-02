@@ -1,5 +1,6 @@
 {
     "name": "George FentDroid",
     "health": 6741,
-    "attack": 69420
+    "attack": 69420,
+    "speed": 1
 }

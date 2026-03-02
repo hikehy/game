@@ -7,9 +7,7 @@ import random
 import platform
 
 #include functions
-from Game.functions.draw import draw
-from Game.functions.clearconsole import clearconsole
-from Game.functions.dodgeresult import dodgeresult
+from functions import *
 
 
 #SUPER DUPER IMPORTANT MAIN VARIABLES
@@ -26,11 +24,11 @@ def importjson(file, name):
 
 #Creating Objects
 def loadalljson():
-    importjson("./Game/data/player.json", "player")
-    importjson("./Game/data/zombie.json", "zombie")
-    importjson("./Game/data/George.json", "george")
-    importjson("./Game/data/skeleton.json", "skeleton")
-
+    importjson("./data/player.json", "player")
+    importjson("./data/zombie.json", "zombie")
+    importjson("./data/George.json", "george")
+    importjson("./data/skeleton.json", "skeleton")
+    
 #choose ennemy
 def selectenemy():
     loadalljson()
